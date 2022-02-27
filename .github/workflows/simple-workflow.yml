@@ -52,6 +52,8 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo "here is the path: " $PATH
+          echo "now for the environmental variables";
+          printenv 
 
 
 
