@@ -57,7 +57,50 @@ jobs:
           printenv 
 
 
+sonarqube-branch-scan:
+    name: scan branch for sonarqube issues
+    runs-on: self-hosted
 
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Import Secrets for AWS
+        uses: hashicorp/vault-action@v2.1.0
+        with:
+          url: https://vault.theatlastango.tools
+          method: approle
+          roleId: ${{ secrets.atlas_vault_role_Id }}
+          secretId: ${{ secrets.atlas_vault_secret_Id }}
+          secrets: |
+            /apollo-jupiter-tango/atlas-kafka/atlas-pre/iris/tango-client-account-manager-user registry_endpoint | KAFKA_REGISTRY_SERVER ;
+            /apollo-jupiter-tango/atlas-kafka/atlas-pre/iris/tango-client-account-manager-user registry_key | KAFKA_REGISTRY_USERNAME ;
+            /apollo-jupiter-tango/atlas-kafka/atlas-pre/iris/tango-client-account-manager-user registry_secret | KAFKA_REGISTRY_PASSWORD ;
+            /atlas/sonarqube sonarqube_server | SONARQUBE_SERVER  ;
+            /atlas/sonarqube sonarqube_token | SONARQUBE_TOKEN ;
+            /apollo-jupiter-tango/sonarqube/keys/tango-client-account-manager sonarqube_key | SONARQUBE_PROJECT_KEY;
+        #      - name: Cache SonarQube packages
+        #uses: actions/cache@v1
+      #        with:
+      #          path: ~/.sonar/cache
+      #          key: ${{ runner.os }}-sonar
+      #          restore-keys: ${{ runner.os }}-sonar
+      #      - name: Cache Maven packages
+      #        uses: actions/cache@v1
+      #        with:
+      #          path: ~/.m2
+      #          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+      #          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: sonarqube_server | SONARQUBE_SERVER;   #${{ secrets.SONAR_HOST_URL }}
+
+        run: |
+          echo ${{GITHUB_TOKEN}}
+          echo ${{SONAR_TOKEN}}
+          echo ${{SONAR_HOST_URL}}
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 
 
 
