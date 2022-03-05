@@ -96,11 +96,11 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             SONAR_HOST_URL: sonarqube_server | SONARQUBE_SERVER;   #${{ secrets.SONAR_HOST_URL }}
 
-          run: |
-            echo ${{GITHUB_TOKEN}}
-            echo ${{SONAR_TOKEN}}
-            echo ${{SONAR_HOST_URL}}
-            mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        #     echo ${{GITHUB_TOKEN}}
+        #    echo ${{SONAR_TOKEN}}
+        #    echo ${{SONAR_HOST_URL}}
+            
 
 
 
