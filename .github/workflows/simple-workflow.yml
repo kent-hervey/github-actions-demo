@@ -58,23 +58,25 @@ jobs:
 
 
   sonarqube-branch-scan:
-      name: scan branch for sonarqube issues
-      runs-on: ubuntu-latest
+    name: scan branch for sonarqube issues
+    runs-on: ubuntu-latest
 
-      steps:
-        - uses: actions/checkout@v2
+    steps:
+      - name: step name
+      - uses: actions/checkout@v2
 
-        - name: Build and analyze
-          env:
-            Role_ID: ${{ secrets.atlas_vault_role_Id }}
-            Secret_ID: ${{ secrets.atlas_vault_secret_Id }}
+      - name: Build and analyze
+        env:
+          Role_ID: ${{ secrets.atlas_vault_role_Id }}
+          Secret_ID: ${{ secrets.atlas_vault_secret_Id }}
 
-              run echo "okay, now I have a run";
-
-        #  run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-        #     echo ${{GITHUB_TOKEN}}
-        #    echo ${{SONAR_TOKEN}}
-        #    echo ${{SONAR_HOST_URL}}
+      - name: another
+          run echo "okay, now I have a run";
+          # echo "and another one";
+      #  run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      #     echo ${{GITHUB_TOKEN}}
+      #    echo ${{SONAR_TOKEN}}
+      #    echo ${{SONAR_HOST_URL}}
             
 
 
