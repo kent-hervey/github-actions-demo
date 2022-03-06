@@ -69,6 +69,7 @@ jobs:
             Role_ID: ${{ secrets.atlas_vault_role_Id }}
             Secret_ID: ${{ secrets.atlas_vault_secret_Id }}
 
+              run echo "okay, now I have a run";
 
         #  run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         #     echo ${{GITHUB_TOKEN}}
