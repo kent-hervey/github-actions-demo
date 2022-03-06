@@ -57,9 +57,9 @@ jobs:
           printenv 
 
 
-  sonarqube-branch-scan:
-    name: scan branch for sonarqube issues
-    runs-on: ubuntu-latest
+  # sonarqube-branch-scan:
+  #   name: scan branch for sonarqube issues
+  #   runs-on: ubuntu-latest
 
     # steps:
     #   - name: step name
