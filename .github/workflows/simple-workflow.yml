@@ -70,7 +70,7 @@ jobs:
             Secret_ID: ${{ secrets.atlas_vault_secret_Id }}
 
 
-          run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        #  run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         #     echo ${{GITHUB_TOKEN}}
         #    echo ${{SONAR_TOKEN}}
         #    echo ${{SONAR_HOST_URL}}
