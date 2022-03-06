@@ -65,10 +65,10 @@ jobs:
       - name: step name
       - uses: actions/checkout@v2
 
-      - name: Build and analyze
-        env:
-          Role_ID: ${{ secrets.atlas_vault_role_Id }}
-          Secret_ID: ${{ secrets.atlas_vault_secret_Id }}
+      # - name: Build and analyze
+      #   env:
+      #     Role_ID: ${{ secrets.atlas_vault_role_Id }}
+      #     Secret_ID: ${{ secrets.atlas_vault_secret_Id }}
 
       - name: another
           run echo "okay, now I have a run";
