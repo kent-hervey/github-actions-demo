@@ -64,10 +64,6 @@ jobs:
       steps:
         - uses: actions/checkout@v2
 
-        - name: Import Secrets for AWS
-          uses: hashicorp/vault-action@v2.1.0
-
-
         - name: Build and analyze
           env:
             Role_ID: ${{ secrets.atlas_vault_role_Id }}
