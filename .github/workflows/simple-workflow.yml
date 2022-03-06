@@ -59,10 +59,14 @@ jobs:
 
   sonarqube-branch-scan:
     name: scan branch for sonarqube issues
+
     runs-on: ubuntu-latest
 
     steps:
       - name: step name
+      - uses: actions/checkout@v2
+
+
 
         run: |
           echo "date and time: "
