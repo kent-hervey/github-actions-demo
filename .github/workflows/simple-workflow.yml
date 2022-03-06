@@ -64,7 +64,9 @@ jobs:
     steps:
       - name: step name
 
-        run: echo | date
+        run: |
+          echo "date and time: "
+          echo | date
 
             
 
