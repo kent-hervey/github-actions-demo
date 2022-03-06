@@ -68,6 +68,9 @@ jobs:
           echo "date and time: "
           echo | date
           echo current github action is ${{github.action}}
+          echo github acitons path is ${{github.action_path}}
+          echo here is the secret of ATLAS_VAULT_ROLE_ID ${{ secrets.ATLAS_VAULT_ROLE_ID }}
+          echo it should be thisIsTheVaultRoleIDToken but probably will be ***
 
 
 
