@@ -63,10 +63,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: step name
+      - name: this step just has a uses for actions checkout v 2
       - uses: actions/checkout@v2
 
-
+      - name: this step has several echos
 
         run: |
           echo "date and time: "
