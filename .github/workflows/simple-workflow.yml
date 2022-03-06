@@ -67,7 +67,11 @@ jobs:
         run: |
           echo "date and time: "
           echo | date
-          echo ${github.action}
+          echo current github action is ${{github.action}}
+
+
+
+
 
             
 
