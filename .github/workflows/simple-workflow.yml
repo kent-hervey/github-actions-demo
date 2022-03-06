@@ -67,7 +67,7 @@ jobs:
         run: |
           echo "date and time: "
           echo | date
-          echo ${{github.action}}
+          echo ${github.action}
 
             
 
