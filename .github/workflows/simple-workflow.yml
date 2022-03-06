@@ -64,7 +64,7 @@ jobs:
     steps:
       - name: step name
 
-        run: echo ${date}
+        run: echo | ${date}
 
             
 
